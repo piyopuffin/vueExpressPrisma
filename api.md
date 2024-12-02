@@ -4,6 +4,7 @@ Training Vue3 + Express + Prisma | [目次](README.md)
 - [DBのデータを操作する（API）](#dbのデータを操作するapi)
   - [Express + Prisma](#express--prisma)
     - [Prismaを入れる](#prismaを入れる)
+      - [Prisma StudioでGUIでDBを操作する](#prisma-studioでguiでdbを操作する)
     - [Expressを入れる](#expressを入れる)
   - [APIを書く](#apiを書く)
     - [nodemonを入れる](#nodemonを入れる)
@@ -40,7 +41,10 @@ Prismaをdev-dependency（`-D`オプション）としてインストールし�
 % npx prisma init --datasource-provider sqlite
 ```
 
-実行するとapi/prisma/schema.prismaファイルが作成されます。
+実行するとapi/prisma/schema.prismaというスキーマファイルが作成されます。
+
+<small>※ スキーマ：テーブル、カラムなど、DBの構造について定義するもの</small>
+
 中身を見てみましょう。
 
 `api/prisma/schema.prisma`
@@ -69,17 +73,20 @@ model tasks {
   isDone Int
 }
 ```
-ターミナルでマイグレーションを実行します。
+ターミナルでマイグレーション（スキーマファイルに定義されているモデルをもとにテーブルや初期データ等を生成してくれる）を実行します。
 
 ```shell
 % npx prisma migrate dev --name init
 ```
 実行するとapiの中にdbが作成され、taskテーブルも追加されています。
 マイグレーションを実行することでjsのコードからPrismaがDBの構造やデータを更新します。
-SQL文がわからなくても、Prismaが裏側で自動でを生成して実行してくれています。
+SQL文がわからなくても、Prismaが裏側で自動でSQL文を生成して実行してくれています。
 モデルに変更があった際もマイグレーションを行えばPrismaが構造を更新してくれます。
 
+#### Prisma StudioでGUIでDBを操作する
+
 PrismaにはDBをGUIで見られるPrisma studioというツールが付属しています。
+今回はこれを使ってテーブルに初期データを追加してみます。
 
 ```shell
 % npx prisma studio
