@@ -55,4 +55,4 @@ npmの欠点を補ったyarnですが、yarnでもまだ解消できていない
 
 詳しいことは[こちら](https://zenn.dev/cloud_ace/articles/articlejs-package-manager-pnpm)が参考になるので確認してみてください。
 ***
-[目次](TOC.md) ｜ [今回作るサイトの構想](concept.md)
+[目次](README.md) ｜ [今回作るサイトの構想](concept.md)
