@@ -15,9 +15,9 @@ Training Vue3 | [目次](TOC.md)
 - タスクの削除
 
 画面
-- home
-- about
-- todo
+- home：ルーティングのためだけに用意したので中身には触れません
+- about：同上
+- todo：ここがメインで触る画面
 
 
 画面のイメージ
@@ -25,6 +25,10 @@ Training Vue3 | [目次](TOC.md)
 <img src="./img/home.png" width="300" style="box-shadow: 0 0 6px rgba(0,0,0,0.2);">
 <img src="./img/about.png" width="300" style="box-shadow: 0 0 6px rgba(0,0,0,0.2);">
 <img src="./img/todoapp.png" width="300" style="box-shadow: 0 0 6px rgba(0,0,0,0.2);">
+
+今回はデザインに凝るのは主旨からずれるので、簡易的なデザインにとどめます。
+UIフレームワークは使わず、cssは.vueの`<style scoped></style>`内に書いていますが、
+cssのソースコードは冗長になるので載せていません。
 
 ## 今回使用する技術の一覧
 

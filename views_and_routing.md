@@ -35,7 +35,7 @@ Training Vue3 | [目次](TOC.md)
 https://github.com/filipelinhares/ress/blob/master/dist/ress.min.css
 
 直下に`src/assets/ress.min.css`として入れましたが、
-分けたい場合は`src/assets/css/ress.min.css`など好みで大丈夫です。
+分けたい場合は`src/assets/css/ress.min.css`など好みの場所で大丈夫です。
 
 ### 編集する
 `src/main.js`

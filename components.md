@@ -174,12 +174,14 @@ routerを使った画面遷移ができましたが、
 
 イメージとしては、
 
-GlobalFooter
-「size:50、color:`#E8A740`をIconUserに渡す」
+> GlobalFooter
+> 「size:50、color:`#E8A740`をIconUserに渡す」
+
 ↓
-IconUser
-「propsでsize:50、color:`#E8A740`を受け取った」
-「svgタグを囲むdivのwidthとheightの値にsizeを、svgタグの`fill`の値にcolorを使う」
+
+> IconUser
+> 「propsでsize:50、color:`#E8A740`を受け取った」
+> 「svgタグを囲むdivのwidthとheightの値にsizeを、svgタグの`fill`の値にcolorを使う」
 
 これをソースコード上に書いていきます。
 
@@ -411,4 +413,4 @@ Vueの基本的なプロジェクト作成に慣れてからでもOKです。
 - [コンポーネントの基礎 | Vue.js](https://ja.vuejs.org/guide/essentials/component-basics.html)
 
 ***
-[ページの用意とルーティング](views_and_routing.md) ｜ [機能を実装してみよう](implement_functions.md)
+[ページの用意とルーティング](views_and_routing.md) ｜ [SQLiteでデータを永続化しよう](sqlite.md)
