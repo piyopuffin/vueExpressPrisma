@@ -53,7 +53,6 @@ npm create vue@latest
 <img src="./img/frontend_initial.png" width="300">
 
 こんな感じになっていると思います。
-console4のテンプレートをいじったことがある人は、見たことがあるような構成だと思います。
 
 <details>
 <summary>
