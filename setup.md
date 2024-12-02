@@ -1,4 +1,4 @@
-Training Vue3 | [目次](TOC.md)
+Training Vue3 + Express + Prisma | [目次](README.md)
 # <img src="./img/logo_vue.svg" width="50" height="50" style="vertical-align:middle;">プロジェクトのセットアップ
 
 - [プロジェクトのセットアップ](#プロジェクトのセットアップ)

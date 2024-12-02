@@ -1,4 +1,4 @@
-Training Vue3 | [目次](TOC.md)
+Training Vue3 + Express + Prisma | [目次](README.md)
 # <img src="./img/logo_vitest.svg" width="50" height="50" style="vertical-align:middle;">コード品質の担保 〜Vitestでテストを書く〜
 
 - [コード品質の担保 〜Vitestでテストを書く〜](#コード品質の担保-vitestでテストを書く)

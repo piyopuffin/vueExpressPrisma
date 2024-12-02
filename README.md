@@ -1,4 +1,4 @@
-# <img src="./img/logo_vue.svg" width="50" height="50" style="vertical-align:middle;">Vue3でゼロからサイトを作ってみる
+# <img src="./img/logo_vue.svg" width="50" height="50" style="vertical-align:middle;">Vue3でゼロからサイトを作ってDBとバックエンドもちょっとさわってみる
 
 ## この演習の全てのステップ
 - [前提条件](preparation.md)
