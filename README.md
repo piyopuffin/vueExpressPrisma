@@ -6,6 +6,7 @@
 - [プロジェクトをセットアップする](setup.md)
 - [ページの用意とルーティング](views_and_routing.md)
 - [共通のパーツをコンポーネントにする](components.md)
+- [画面を構築する](createViews)
 - [SQLiteでデータを永続化しよう](sqlite.md)
 - [DBのデータを操作する（API）](api.md)
 - [フロントエンドからAPIリクエストする](api_request.md)

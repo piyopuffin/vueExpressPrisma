@@ -202,4 +202,4 @@ SELECT * FROM tasks;
 APIを用意することで、API経由でDBにアクセスしてデータを操作することができます。
 
 ***
-[機能を実装してみよう](implement_function.md) | [フロントエンドからDBに接続する](api.md)
+[画面を構築する](createViews.md) | [フロントエンドからDBに接続する](api.md)

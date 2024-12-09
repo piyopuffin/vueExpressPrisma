@@ -12,13 +12,9 @@ Training Vue3 + Express + Prisma | [目次](README.md)
     - [親から子に情報を渡すprops](#親から子に情報を渡すprops)
     - [親側（GlobalFooter.vue）](#親側globalfootervue)
     - [子側（IconUser.vue他）](#子側iconuservue他)
+      - [defineProps](#defineprops)
+    - [templateやscriptでpropsを使用する](#templateやscriptでpropsを使用する)
     - [最終的な形](#最終的な形)
-  - [ToDo画面の内容を作る](#todo画面の内容を作る)
-    - [リストレンダリング `v-for`](#リストレンダリング-v-for)
-      - [リストアイテムの構造を作る](#リストアイテムの構造を作る)
-    - [`v-for`で配列の内容を反映する](#v-forで配列の内容を反映する)
-    - [イベントハンドリング `v-on`](#イベントハンドリング-v-on)
-  - [GlobalHeaderやToDo以外のViewを自分で実装しよう](#globalheaderやtodo以外のviewを自分で実装しよう)
   - [参考資料](#参考資料)
 
 ## どこをcomponentsにするか？
@@ -114,7 +110,7 @@ import GlobalFooter from './components/GlobalFooter.vue';
 ### SVGアイコンをコンポーネントにして呼び出す
 `src/components/icons`ディレクトリを作り、必要なアイコンをコンポーネントとして用意してみましょう。
 
-`src/components/icons/IconUser`
+`src/components/icons/IconUser.vue`
 ```vuejs
 <script setup>
 </script>
@@ -127,9 +123,12 @@ import GlobalFooter from './components/GlobalFooter.vue';
 ```
 
 ＜練習＞
+
 同じやりかたで
-`src/components/icons/IconHome`
-`src/components/icons/IconToDo`
+
+- `src/components/icons/IconHome.vue`
+- `src/components/icons/IconToDo.vue`
+
 を用意しましょう。
 
 
@@ -159,18 +158,16 @@ import IconToDo from './icons/IconToDo.vue';
 それぞれのアイコンをクリックするとちゃんとルーティングされたviewに表示が切り替わることが確認できます。
 
 ## 情報をコンポーネントに渡す（props）
-routerを使った画面遷移ができましたが、
-アイコンサイズが大きく、色も指定されていないので真っ黒です。
+routerを使った画面遷移ができましたが、アイコンサイズが大きく、色も指定されていないので真っ黒です。
 
 <img src="./img/footer_icon_huge.png" width="500" style="border: 1px solid #ccc;">
 
 これを調整しなければいけません。
-
-### 親から子に情報を渡すprops
 コンポーネント側でsvgタグ等にベタ書きしたりcssを書いたりしてもいいのですが、
 せっかくなのでpropsというvueファイルを跨いで情報を渡す機能の練習をしてみましょう。
-呼び出し元となる親（GlobalFooter.vue）から子（IconUser.vue等）にpropsで情報を受け渡し、
-それによって色やサイズが変わるようにしてみます。
+
+### 親から子に情報を渡すprops
+呼び出し元となる親（GlobalFooter.vue）から子（IconUser.vue等）に、propsを使って色やサイズの情報を受け渡しをして見た目が変わるようにしてみます。
 
 イメージとしては、
 
@@ -186,12 +183,14 @@ routerを使った画面遷移ができましたが、
 これをソースコード上に書いていきます。
 
 ### 親側（GlobalFooter.vue）
-値はhtmlの属性値のように渡すことができる。
+propsはhtmlの属性値のように書いて渡すことができます。
+
 `<IconUser :size="40" color="#E8A740" />`
 
+上の例では、sizeという名前で`40`の数値を、colorという名前で`#E8A740`という文字列をIconUserに渡しています。
 
 <details>
-<summary>TIPS：静的なpropsと動的なprops</summary>
+<summary>TIPS：なぜsizeに「:」をつけているのか？静的なpropsと動的なprops</summary>
 
 `v-bind`またはそのショートカット記法の`:`を使うことで、
 script内で宣言されているプロパティ、あるいは式そのものなど動的なpropsを渡すことができる。
@@ -209,10 +208,12 @@ script内で宣言されているプロパティ、あるいは式そのもの�
 </details>
 
 ### 子側（IconUser.vue他）
-主にこんな感じ
+情報を受け取る子側は以下をする必要があります。
+
 - 受け取るpropsを宣言する(defineProps)
 - templateやscriptの中で使う
 
+#### defineProps
 `<script setup>`で`defineProps()`マクロを使って受け取るpropsを宣言します。
 propsの名称と、想定する型のコンストラクタ関数をセットで書くことで定義できます。
 これによって、もし想定外の型でpropsが渡された時にはブラウザのconsoleに警告が表示されます。
@@ -229,7 +230,9 @@ defineProps({
 })
 ```
 
-これで受け取る部分はできたので、今回はそのままtemplate内のディレクティブに渡してみます。
+### templateやscriptでpropsを使用する
+definePropsされていれば、templateやscriptでpropsで受け取った値を取り出して使うことができます。
+今回はそのままtemplate内のディレクティブに渡してみます。
 
 ```html
 <div :style="'width:'+size+'px;height:'+size+'px;'">
@@ -298,116 +301,7 @@ defineProps({
 </style>
 ```
 
-## ToDo画面の内容を作る
-### リストレンダリング `v-for`
-ToDoリストは同じ構成のパーツをアイテム（タスク）の数だけ繰り返し描画する必要があります。
-Vue.jsには`v-for`という、配列のアイテムの数だけ繰り返し描画できる仕組みがあります。
-これを利用してリストを描画してみましょう。
 
-#### リストアイテムの構造を作る
-<img src="./img/v-for_single.png" width="300" style="box-shadow: 0 0 6px rgba(0,0,0,0.1);">
-
-リスト部分の最小単位はこんな感じですね。
-これを`src/views/ToDoApp.vue`の`<template>`に書いていきましょう。
-
-```vuejs
-<script setup>
-import IconEdit from '@/components/icons/IconEdit.vue';
-import IconDelete from '@/components/icons/IconDelete.vue';
-</script>
-
-<template>
-  <main>
-    <section class="list">
-      <div class="list-item">
-        <div class="content">
-          <input type="checkbox">
-          <input type="text" value="玉ねぎを買う">
-        </div>
-        <div class="action">
-          <a class="btn edit"><IconEdit size="14" color="#555555" /></a>
-          <a class="btn delete"><IconDelete size="14" color="#EB7474" /></a>
-        </div>
-      </div>
-    </section>
-  </main>
-</template>
-```
-またアイコンを使うので、先ほどと同じようにコンポーネントにして呼び出ししています。
-
-### `v-for`で配列の内容を反映する
-まだAPIはないので、下記のようなダミーデータを用意します。
-```json
-[
-  {id:1, title:"玉ねぎを買う", isDone:0},
-  {id:2, title:"犬の散歩をする", isDone:0},
-  {id:3, title:"猫のトイレを掃除する", isDone:0},
-  {id:4, title:"廊下の電球を替える", isDone:0},
-  {id:5, title:"ハンドソープを詰め替える", isDone:0}
-]
-```
-
-`v-for`の構文の例
-```html
-<div v-for="item in 配列名">
-  <p>{{ item.key名 }}</p>
-</div>
-```
-`items`という配列から1つ1つ取り出したデータを`item`(ここの名前は任意で、itemじゃなくても良いです)として、
-`item`のデータを使ってレンダリングができます。
-
-今回の場合は配列の中で使用するのはtaskのみなので、先ほどの`ToDoApp.vue`はこう書き換えることができます。
-```vuejs
-<script setup>
-import { ref } from 'vue'
-import IconEdit from '@/components/icons/IconEdit.vue';
-import IconDelete from '@/components/icons/IconDelete.vue';
-
-const tasks = ref(
-  [
-    {id:1, title:"玉ねぎを買う", isDone:0},
-    {id:2, title:"犬の散歩をする", isDone:0},
-    {id:3, title:"猫のトイレを掃除する", isDone:0},
-    {id:4, title:"廊下の電球を替える", isDone:0},
-    {id:5, title:"ハンドソープを詰め替える", isDone:0}
-  ]
-)
-</script>
-
-<template>
-  <main>
-    <section class="list">
-      <div class="list-item" v-for="task in tasks" :key="task.id">
-        <div class="content">
-          <input type="checkbox" v-model="task.isDone" @click="task.isDone = !task.isDone">
-          <input type="text" :value="task.title">
-        </div>
-        <div class="action">
-          <a class="btn edit"><IconEdit size="14" color="#555555" /></a>
-          <a class="btn delete"><IconDelete size="14" color="#EB7474" /></a>
-        </div>
-      </div>
-    </section>
-  </main>
-</template>
-
-<style>
- //styleは省略します。
-</style>
-```
-
-
-
-### イベントハンドリング `v-on`
-
-
-## GlobalHeaderやToDo以外のViewを自分で実装しよう
-ここは動的な要素を入れていないのでどんなやり方でもできそうですね。
-色々なやり方を試したりで自由に触ってみてください。
-
-基本的なVueプロジェクトについてはここまでで説明してきた内容になります。
-次のページからは、APIやDBまでを網羅する難しめの内容になります。
-Vueの基本的なプロジェクト作成に慣れてからでもOKです。
 
 ## 参考資料
 - [コンポーネントの基礎 | Vue.js](https://ja.vuejs.org/guide/essentials/component-basics.html)
