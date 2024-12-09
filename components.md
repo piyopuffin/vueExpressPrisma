@@ -307,4 +307,4 @@ defineProps({
 - [コンポーネントの基礎 | Vue.js](https://ja.vuejs.org/guide/essentials/component-basics.html)
 
 ***
-[ページの用意とルーティング](views_and_routing.md) ｜ [SQLiteでデータを永続化しよう](sqlite.md)
+[ページの用意とルーティング](views_and_routing.md) ｜ [画面を構築する](createViews.md)
