@@ -50,11 +50,11 @@ import IconDelete from '@/components/icons/IconDelete.vue';
 まだAPIはないので、下記のようなダミーデータを用意します。
 ```json
 [
-  {id:1, title:"玉ねぎを買う", isDone:0},
-  {id:2, title:"犬の散歩をする", isDone:0},
-  {id:3, title:"猫のトイレを掃除する", isDone:0},
-  {id:4, title:"廊下の電球を替える", isDone:0},
-  {id:5, title:"ハンドソープを詰め替える", isDone:0}
+  {"id":1, "title":"玉ねぎを買う", "isDone":0},
+  {"id":2, "title":"犬の散歩をする", "isDone":0},
+  {"id":3, "title":"猫のトイレを掃除する", "isDone":0},
+  {"id":4, "title":"廊下の電球を替える", "isDone":0},
+  {"id":5, "title":"ハンドソープを詰め替える", "isDone":0}
 ]
 ```
 
