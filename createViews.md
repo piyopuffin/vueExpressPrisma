@@ -23,7 +23,6 @@ Vue.jsには`v-for`という、配列のアイテムの数だけ繰り返し描�
 
 ```vuejs
 <script setup>
-import IconEdit from '@/components/icons/IconEdit.vue';
 import IconDelete from '@/components/icons/IconDelete.vue';
 </script>
 
@@ -36,7 +35,6 @@ import IconDelete from '@/components/icons/IconDelete.vue';
           <input type="text" value="玉ねぎを買う">
         </div>
         <div class="action">
-          <a class="btn edit"><IconEdit size="14" color="#555555" /></a>
           <a class="btn delete"><IconDelete size="14" color="#EB7474" /></a>
         </div>
       </div>
@@ -71,7 +69,6 @@ import IconDelete from '@/components/icons/IconDelete.vue';
 ```vuejs
 <script setup>
 import { ref } from 'vue'
-import IconEdit from '@/components/icons/IconEdit.vue';
 import IconDelete from '@/components/icons/IconDelete.vue';
 
 const tasks = ref(
